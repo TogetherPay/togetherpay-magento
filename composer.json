@@ -4,16 +4,6 @@
 	"type" : "magento2-module",
 	"description" : "Magento 2 TogetherPay Payment Module",
 	"version" : "v1.1.0",
-	 "require": {
-	        "php": ">=7.4.0",
-	        "magento/framework": "^103.0",
-	        "magento/module-checkout": "100.4.*",
-	        "magento/module-payment": "100.4.*",
-	        "magento/module-quote-graph-ql": "100.4.*",
-	        "magento/module-sales": "103.0.*",
-	        "magento/module-weee": "100.4.*",
-	        "afterpay-global/module-cash-app-pay" : "^5"
-	},
 	"authors" : [{
 			"name" : "TogetherPay",
 			"homepage" : "http://togetherpay.io"
