@@ -22,9 +22,10 @@ class Call
     /**
      * @var for HTTP Client
      */
-    protected $client;
-    protected $jsonHelper;
-    protected $helper;
+     protected $httpClient; // Updated property name
+     protected $splitoffConfig; // Added property declaration
+     protected $jsonHelper;
+     protected $helper;  
 
     /**
      * Call constructor.
