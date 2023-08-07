@@ -1,0 +1,20 @@
+{
+	"name" : "splitoff/module-togetherpay",
+	"license" : "OSL-3.0",
+	"type" : "magento2-module",
+	"description" : "Magento 2 TogetherPay Payment Module",
+	"version" : "1.1.0",
+	"authors" : [{
+			"name" : "TogetherPay",
+			"homepage" : "http://togetherpay.io"
+		}
+	],
+	"autoload" : {
+		"files" : [
+			"registration.php"
+		],
+		"psr-4" : {
+			"Splitoff\\TogetherPay\\" : ""
+		}
+	}
+}

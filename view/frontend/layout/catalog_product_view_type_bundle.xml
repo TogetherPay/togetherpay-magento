@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento 2 extensions for TogetherPay Payment
+ *
+ * @author Splitoff
+ * @copyright 2022-2023 TogetherPay https://togetherpay.io
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<move element="splitoff.price.installments" destination="bundle.summary" after="product.info.addto.bundle"/>
+    </body>
+</page>

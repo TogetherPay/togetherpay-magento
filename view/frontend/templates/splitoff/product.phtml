@@ -1,0 +1,35 @@
+<?php
+/**
+ * Magento 2 extensions for TogetherPay Payment
+ *
+ * @author Splitoff
+ * @copyright 2022-2023 TogetherPay https://togetherpay.io
+ */
+$product_type = $block->getTypeOfProduct();
+
+if($block->isPaymentMethodActive() && $block->isDisplayOnProductPage() && $product_type != "grouped" && $block->canUseCurrency()){
+    $splitoff_eligible = "true";
+    if (($block->canShow() === false)) {
+        $splitoff_eligible = "false";
+    }
+    $min_limit=$block->getMinOrderLimit();
+    $show_lower_limit="true";
+    if((float)$min_limit<1){
+        $show_lower_limit="false";
+    }
+    $store_currency = $block->getCurrentCurrency();
+    $data_locale = $block->getCurrentLocale();
+    $data_amount = $block->getFinalAmount();
+    $enable_cbt = $this->helper('Splitoff\TogetherPay\Helper\Data')->getConfig('payment/splitoffpayovertime/enable_cbt');
+    $data_enable_cbt = ! empty($enable_cbt) ? "true" : "false";
+    ?>
+    <splitoff-placemant>
+        <span>Split this payment between mates with</span>
+        <span style="display: inline-block; vertical-align: middle">
+				<img src="<?=$this->getViewFileUrl('Splitoff_TogetherPay::images/logo1.png')?>" style="display: block; max-width: 55px;" alt="TogetherPay">
+        </span>
+        <span class="splitoff-popup" style="font-size: 12px;cursor: pointer">see more</span>
+    </splitoff-placemant>
+<?php
+}
+?>

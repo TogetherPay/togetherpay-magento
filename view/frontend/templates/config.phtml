@@ -1,0 +1,11 @@
+<?php
+/** @var Splitoff\TogetherPay\Block\Config $this */
+if($this->checkCurrency()){
+?>
+
+<script>
+    window.Splitoff = window.Splitoff || {};
+    window.Splitoff.merchantId = '<?=$this->getMerchantId()?>';
+    window.Splitoff.pingUrl = '<?=$this->getPingUrl()?>';
+</script>
+<?php }?>

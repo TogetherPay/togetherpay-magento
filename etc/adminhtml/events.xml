@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento 2 extensions for TogetherPay Payment
+ *
+ * @author Splitoff
+ * @copyright 2022-2023 TogetherPay https://togetherpay.io
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+	<event name="sales_order_shipment_save_before">
+        <observer name="splitoff_before_shipment" instance="Splitoff\TogetherPay\Observer\BeforeShipment" />
+    </event>
+	<event name="view_block_abstract_to_html_before">
+        <observer name="splitoff_view_block_abstract_to_html_before" instance="Splitoff\TogetherPay\Observer\BeforeCreditmemoLoad" />
+    </event>
+</config>

@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<csp_whitelist xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Csp:etc/csp_whitelist.xsd">
+    <policies>
+        <policy id="script-src">
+            <values>
+                <value id="splitoff-sandbox-consumer-portal" type="host">https://portal.sandbox.splitoff.io</value>
+                <value id="splitoff-production-consumer-portal" type="host">https://portal.splitoff.io</value>
+                <value id="splitoff-cdn" type="host">https://static.splitoff.io</value>
+                <value id="splitoff-sandbox-jslib" type="host">https://js.sandbox.splitoff.io</value>
+                <value id="splitoff-production-jslib" type="host">https://js.splitoff.io</value>
+            </values>
+        </policy>
+		<policy id="connect-src">
+            <values>
+                <value id="splitoff-cdn-connect" type="host">static.splitoff.io</value>
+                <value id="splitoff-sandbox-jslib-connect" type="host">js.sandbox.splitoff.io</value>
+                <value id="splitoff-production-jslib-connect" type="host">js.splitoff.io</value>
+            </values>
+        </policy>
+		<policy id="style-src">
+        		<values>
+            		<value id="splitoff-cdn-style" type="host">static.splitoff.io/</value>
+            		<value id="splitoff-sandbox-jslib-style" type="host">js.sandbox.splitoff.io</value>
+                	<value id="splitoff-production-jslib-style" type="host">js.splitoff.io</value>
+        		</values>
+    	</policy>
+		<policy id="img-src">
+            <values>
+                 <value id="splitoff-cdn-base" type="host">https://static.splitoff.io</value>
+            </values>
+        </policy>
+    </policies>
+</csp_whitelist>

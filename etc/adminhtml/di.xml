@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento 2 extensions for TogetherPay Payment
+ *
+ * @author Splitoff
+ * @copyright 2022-2023 TogetherPay https://togetherpay.io
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Magento\Config\Model\Config">
+        <plugin name="updateOrderTotalLimitSplitoff" type="Splitoff\TogetherPay\Model\Config\Save\Plugin" />
+    </type>
+
+    <type name="Splitoff\TogetherPay\Model\Adapter\ApiMode">
+        <arguments>
+            <argument name="environments" xsi:type="array">
+                <item name="sandbox" xsi:type="array">
+                    <item name="label" xsi:type="string">Sandbox</item>
+                    <item name="api_url" xsi:type="string">http://develop.splitoff.io/</item>
+                    <item name="web_url" xsi:type="string">http://develop.splitoff.io/pay/develop/</item>
+                    <item name="js_lib_url" xsi:type="string">https://js.sandbox.splitoff.io/</item>
+
+                </item>
+                <item name="production" xsi:type="array">
+                    <item name="label" xsi:type="string">Production</item>
+                    <item name="api_url" xsi:type="string">http://splitoff.io/</item>
+                    <item name="web_url" xsi:type="string">http://splitoff.io/pay/develop/</item>
+                    <item name="js_lib_url" xsi:type="string">https://js.splitoff.io/</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+
+	<preference for="Magento\Catalog\Helper\Category" type="Splitoff\TogetherPay\Helper\Category" />
+</config>

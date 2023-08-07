@@ -1,0 +1,157 @@
+/**
+ * Magento 2 extensions for TogetherPay Payment
+ *
+ * @author Splitoff
+ * @copyright 2022-2023 TogetherPay https://togetherpay.io
+ */
+
+/** splitoff.css */
+.checkout-payment-method .payment-method #splitoffpayovertime.payment-method-content {
+    padding-right: 22px;
+}
+
+.checkout-payment-method .payment-method._active #splitoffpayovertime.payment-method-content {
+    overflow:hidden
+}
+
+#splitoffpayovertime-method .payment-method-note {
+    font-size: 1.2rem;
+    color: #a0a0a0;
+    text-align: center;
+}
+
+#splitoffpayovertime-method .payment-method-note h3 {
+    color: #00a4e4;
+    text-align: left;
+}
+
+#splitoffpayovertime-method .payment-method-note ul {
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+#splitoffpayovertime-method .payment-method-note ul li {
+    width: 24%;
+    display: inline-block;
+}
+
+#splitoffpayovertime-method .payment-method-note ul.cost li {
+    font-size: 1.8rem;
+    color: #153F72;
+}
+
+#splitoffpayovertime-method .splitoff-checkout-redirect {
+    margin-top: 1rem;
+    text-align: left;
+    background-color: #f6f7f9;
+    display: inline-block;
+    padding: 15px;
+}
+
+#splitoffpayovertime-method .splitoff-checkout-redirect .instalment-footer {
+    width: 100%;
+    float: left;
+    cursor: default;
+}
+
+@media only screen and (min-width : 992px) {
+    #splitoffpayovertime-method .splitoff-checkout-redirect .instalment-footer {
+        width: 57%;
+    }
+}
+
+@media only screen and (min-width : 1200px) {
+    #splitoffpayovertime-method .splitoff-checkout-redirect .instalment-footer {
+        width: 65%;
+    }
+}
+
+#splitoffpayovertime-method .actions-toolbar {
+    float: right;
+    margin-top: 1.5rem;
+    line-height: 1.1;
+    width: 100%;
+    text-align: center;
+}
+
+@media only screen and (min-width : 992px) {
+    #splitoffpayovertime-method .actions-toolbar {
+        width: auto;
+        margin-top: 0px;
+    }
+}
+
+@media only screen and (min-width : 768px) {
+    #splitoffpayovertime-method .actions-toolbar .primary {
+        width: 100%;
+    }
+}
+
+.modal-popup.splitoff-learn-more .modal-inner-wrap {
+    width: 360px !important
+}
+
+@media only screen and (min-width : 992px) {
+    .modal-popup.splitoff-learn-more .modal-inner-wrap {
+        width: 659px !important
+    }
+}
+
+.modal-popup.splitoff-learn-more .modal-inner-wrap .modal-footer button{
+    display: none;
+}
+
+.modal-popup.splitoff-learn-more .action-close {
+    padding: 1.75rem !important;
+}
+
+.splitoff_instalments_logo {
+    vertical-align: middle;
+    display: inline-block;
+    height: 15px;
+}
+
+.splitoff_checkout_steps {
+    background-size: 18px 18px;
+    vertical-align: middle;
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+}
+.checkout-methods-items button.btn-splitoff-checkout {
+    padding: 13px 15px 10px 10px;
+    width: 100%;
+}
+.checkout-payment-method #splitoffpayovertime-method .payment-icon{
+	height:30px;
+	width:auto;
+}
+
+.splitoff.primary {
+  background-image: none;
+  background: #000;
+  border: 1px solid #000;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+
+}
+.splitoff.primary:focus,
+.splitoff.primary:active,
+.splitoff.primary:hover  {
+  background: #000;
+  border: 1px solid #000;
+  color: #ffffff;
+}
+
+.splitoff.primary.disabled,
+.splitoff.primary[disabled],
+fieldset[disabled] .splitoff.primary {
+  opacity: 0.5;
+  cursor: default;
+  pointer-events: none;
+}
+
+.splitoff-popup{
+    cursor: pointer;
+}

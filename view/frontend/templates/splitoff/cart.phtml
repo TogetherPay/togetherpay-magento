@@ -1,0 +1,54 @@
+<?php
+/**
+ * Magento 2 extensions for TogetherPay Payment
+ *
+ * @author Splitoff
+ * @copyright 2022-2023 TogetherPay https://togetherpay.io
+ */
+
+if($block->isPaymentMethodActive() &&  $block->isDisplayOnCartPage() && $block->canUseCurrency() ){
+    $splitoff_eligible = "true";
+    if (($block->canShow() === false)) {
+        $splitoff_eligible = "false";
+    }
+
+    $min_limit=$block->getMinOrderLimit();
+    $max_limit=$block->getMaxOrderLimit();
+    $show_lower_limit="true";
+    if((float)$min_limit<1){
+        $show_lower_limit="false";
+    }
+ ?> <script
+    	src="<?= $block->escapeUrl($block->getSplitoffJsLibUrl());?>"
+    	data-min="<?= /* @noEscape */ $min_limit; ?>"
+    	data-max="<?= /* @noEscape */ $max_limit; ?>" async></script>
+ <?php
+    $store_currency = $block->getCurrentCurrency();
+    $data_locale = $block->getCurrentLocale();
+    $data_amount = $block->getFinalAmount();
+    $enable_cbt = $this->helper('Splitoff\TogetherPay\Helper\Data')->getConfig('payment/splitoffpayovertime/enable_cbt');
+    $data_enable_cbt = ! empty($enable_cbt) ? "true" : "false";
+?>
+    <div style="margin-bottom: 25px">
+        <span><?php echo __('Split this payment between mates'); ?></span>
+        <span style="display: inline-block; vertical-align: middle">
+				<img src="<?=$this->getViewFileUrl('Splitoff_TogetherPay::images/logo1.png')?>" style="display: block; max-width: 55px;" alt="TogetherPay">
+        </span>
+        <span class="splitoff-popup" style="font-size: 12px;cursor: pointer">see more</span>
+    </div>
+ <splitoff-placement
+    	data-locale="<?= /* @noEscape */  $data_locale;?>"
+    	data-currency="<?= /* @noEscape */ $store_currency;?>"
+    	data-amount="<?= /* @noEscape */ $data_amount; ?>"
+    	data-cbt-enabled="<?= /* @noEscape */ $data_enable_cbt;?>"
+    	data-show-lower-limit="<?= /* @noEscape */  $show_lower_limit;?>"
+    	data-cart-is-eligible="<?= /* @noEscape */ $splitoff_eligible;?>"
+    	data-intro-text="Split payment"></splitoff-placement>
+<?php if($data_amount>=$min_limit && $data_amount<=$max_limit && $splitoff_eligible!="false" ){?>
+	    <!--    Button split now-->
+	    <button type="button" data-role="proceed-to-checkout" onclick="window.location.href='<?php echo $block->getUrl('checkout', ['_secure' => true]);?>'" title="<?php echo __('Split this payment between mates') ?>" class="splitoff primary btn-splitoff-checkout">
+	        <img src="https://togetherpay.io/pay/splitoff_w.png" alt="<?php echo __('Split this payment between mates'); ?>" style="height: 31px"/>
+	    </button>
+<?php
+    }
+} ?>

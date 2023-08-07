@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento 2 extensions for TogetherPay Payment
+ *
+ * @author Splitoff
+ * @copyright 2022-2023 TogetherPay https://togetherpay.io
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Cron:etc/crontab.xsd">
+
+    <group id="default">
+		<job name="splitoff_order_status_update" instance="Splitoff\TogetherPay\Model\Cron\Status" method="execute">
+            <schedule>*/5 * * * *</schedule>
+        </job>
+    </group>
+</config>

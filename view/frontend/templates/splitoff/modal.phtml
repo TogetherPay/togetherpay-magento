@@ -1,0 +1,96 @@
+<?php
+/**
+ * Magento 2 extensions for TogetherPay Payment
+ *
+ * @author Splitoff
+ * @copyright 2022-2023 TogetherPay https://togetherpay.io
+ */
+$enable_cbt = $this->helper('Splitoff\TogetherPay\Helper\Data')->getConfig('payment/splitoffpayovertime/enable_cbt');
+$store_base_currency = $this->helper('Splitoff\TogetherPay\Helper\Data')->getConfig('currency/options/default');
+if(!$enable_cbt){
+	$enable_cbt = 0;
+}
+?>
+<div id="splitoff-modal-popup" style="display:none">
+    <a href="https://togetherpay.io/terms/" target="_blank">
+        <img class="splitoff-modal-image" alt="Splitoff"/>
+    </a>
+</div>
+<script>
+	require(
+        [
+            'jquery',
+			'Magento_Ui/js/modal/modal'
+		],
+        function(
+            $,
+			modal
+        ){
+			var storeCurrency="<?php echo $store_base_currency;?>";
+			var enable_cbt=<?php echo $enable_cbt;?>;
+			var width=$(window).width();
+
+			if((storeCurrency=="USD" || storeCurrency=="CAD") && !$("#splitoff-modal-container").length){
+    			var filename=(storeCurrency=="CAD")?"ca":"us";
+    			$('head').append('<link rel="stylesheet" href="https://togetherpay.io/modal/'+filename+'.css" type="text/css" src_type="url"/>');
+    			 $.ajax({
+    				url: 'https://togetherpay.io/modal/'+filename+'.html',
+    				complete: function(jqXHR, textStatus) {
+    				  if (jqXHR.status == 200) {
+    					$('#maincontent')
+    					  .append(jqXHR.responseText);
+    					}
+    				}
+    			 });
+			}
+
+			var options = {
+                responsive: false,
+                innerScroll: false,
+                modalClass: 'splitoff-learn-more'
+            };
+            // register poup
+            var popup = modal(options, $('#splitoff-modal-popup'));
+
+			if(enable_cbt){
+				if(width > 640){
+					$("#splitoff-modal-popup .splitoff-modal-image").attr({src:"https://static.splitoff.io/lightbox-desktop-cbt.png",srcset:"https://static.splitoff.io/lightbox-desktop-cbt.png 1x,https://static.splitoff.io/lightbox-desktop-cbt@2x.png 2x,https://static.splitoff.io/lightbox-desktop-cbt@3x.png 3x"});
+				}
+				else{
+					$("#splitoff-modal-popup .splitoff-modal-image").attr({src:"https://static.splitoff.io/lightbox-mobile.png",srcset:"https://static.splitoff.io/lightbox-mobile-cbt.png 1x,https://static.splitoff.io/lightbox-mobile-cbt@2x.png 2x,https://static.splitoff.io/lightbox-mobile-cbt@3x.png 3x"});
+				}
+			}
+			else{
+				if(width > 640){
+					$("#splitoff-modal-popup .splitoff-modal-image").attr({src:"https://static.splitoff.io/lightbox-desktop.png",srcset:"https://static.splitoff.io/lightbox-desktop.png 1x,https://static.splitoff.io/lightbox-desktop@2x.png 2x,https://static.splitoff.io/lightbox-desktop@3x.png 3x"});
+				}
+				else{
+					$("#splitoff-modal-popup .splitoff-modal-image").attr({src:"https://static.splitoff.io/lightbox-mobile.png",srcset:"https://static.splitoff.io/lightbox-mobile.png 1x,https://static.splitoff.io/lightbox-mobile@2x.png 2x,https://static.splitoff.io/lightbox-mobile@3x.png 3x"});
+				}
+			}
+
+            // register the click to be popup #image
+            $( ".splitoff-modal-popup-trigger" ).on( "click", function() {
+                $('#splitoff-modal-popup').show();
+                $('#splitoff-modal-popup').modal('openModal');
+            });
+
+            // register the click to be popup #html
+            // Add classname suffix based on currency
+            var suffix=(storeCurrency=="CAD")?"ca":"us";
+            $( ".splitoff-modal-popup-trigger-"+suffix ).on( "click", function() {
+
+                if($("#splitoff-modal-container").length!=0){
+
+					modal(options, $('#splitoff-modal-content'));
+					$('#splitoff-modal-content').show();
+					$('#splitoff-modal-content').modal('openModal');
+
+				}
+            });
+
+
+		}
+	);
+</script>
+
