@@ -1,9 +1,9 @@
 {
 	"name" : "splitoff/module-togetherpay",
-	"license" : "Apache-2.0",
+	"license" : "OSL-3.0",
 	"type" : "magento2-module",
 	"description" : "Magento 2 TogetherPay Payment Module",
-	"version" : "v1.1.0",
+	"version" : "v2.2.0",
 	"require": {
 	        "php": ">=7.4.0",
 	        "magento/framework": "^103.0",
