@@ -16,8 +16,5 @@
 		"psr-4" : {
 			"Splitoff\\TogetherPay\\" : ""
 		}
-	},
-	{
-    		"minimum-stability": "dev"
 	}
 }
