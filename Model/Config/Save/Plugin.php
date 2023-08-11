@@ -24,6 +24,7 @@ class Plugin
     protected $storeManager;
     protected $request;
     protected $messageManager;
+    protected $configWriter;
     protected $_scopeConfig;
 
     /**

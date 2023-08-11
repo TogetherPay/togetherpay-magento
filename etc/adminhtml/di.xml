@@ -17,15 +17,15 @@
             <argument name="environments" xsi:type="array">
                 <item name="sandbox" xsi:type="array">
                     <item name="label" xsi:type="string">Sandbox</item>
-                    <item name="api_url" xsi:type="string">http://develop.splitoff.io/</item>
-                    <item name="web_url" xsi:type="string">http://develop.splitoff.io/pay/develop/</item>
+                    <item name="api_url" xsi:type="string">https://api-sandbox.splitoff.io/</item>
+                    <item name="web_url" xsi:type="string">https://splitoff.io/pay/develop/</item>
                     <item name="js_lib_url" xsi:type="string">https://js.sandbox.splitoff.io/</item>
 
                 </item>
                 <item name="production" xsi:type="array">
                     <item name="label" xsi:type="string">Production</item>
-                    <item name="api_url" xsi:type="string">http://splitoff.io/</item>
-                    <item name="web_url" xsi:type="string">http://splitoff.io/pay/develop/</item>
+                    <item name="api_url" xsi:type="string">https://splitoff.io/</item>
+                    <item name="web_url" xsi:type="string">https://splitoff.io/pay/develop/</item>
                     <item name="js_lib_url" xsi:type="string">https://js.splitoff.io/</item>
                 </item>
             </argument>
